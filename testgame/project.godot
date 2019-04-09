@@ -15,9 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Kinematic Collision"
-run/main_scene="res://colworld.tscn"
-config/icon="res://icon.png"
+config/name="Spinner"
+run/main_scene="res://scenes/title.tscn"
+config/icon="res://sprites/icon.png"
 
 [gdnative]
 

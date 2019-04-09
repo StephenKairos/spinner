@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="ending" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 320.0
+margin_top = 260.0
+margin_right = 719.0
+margin_bottom = 342.0
+text = "You reached the end!
+It's still in development..."
+align = 1
+valign = 1
+
