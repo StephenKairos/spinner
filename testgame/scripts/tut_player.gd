@@ -7,6 +7,8 @@ extends KinematicBody2D
 const MOTION_SPEED = 200 # Pixels/second
 const BUILDSPIN = 0.13 # radians
 const RELEASESPIN = 0.25 # radiants
+const FRICTION = 0.98
+const BUILD_FRICTION = 0.96
 
 var speed = 200
 var spin_velocity = 0 # radians
@@ -17,7 +19,7 @@ onready var scythes = get_node("scythes")
 onready var center = get_node("center")
 
 func _physics_process(delta):
-	speed *= 0.98
+	speed *= FRICTION
 	
 	# if abs(spin_velocity) > BUILDSPIN:
 		# spin_velocity *= 0.99
@@ -29,11 +31,12 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("left"):
 		spin_velocity = -1 * BUILDSPIN
-		force = Vector2(0, 0)
+		#force = Vector2(0, 0)
 	if Input.is_action_just_pressed("right"):
 		spin_velocity = BUILDSPIN
-		force = Vector2(0, 0)
+		#force = Vector2(0, 0)
 	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+		speed *= BUILD_FRICTION
 		center.set_offset(Vector2( \
 	        rand_range(-1.0, 1.0) * shake_amount, \
         	rand_range(-1.0, 1.0) * shake_amount \
@@ -53,3 +56,6 @@ func _physics_process(delta):
 	motion = motion.normalized() * speed
 
 	move_and_slide(motion)
+	
+func hit():
+	get_tree().reload_current_scene()
