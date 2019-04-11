@@ -16,12 +16,16 @@ var spin_velocity = 0 # radians
 var force = Vector2()
 var shake_amount = 1.0
 
+onready var global = get_node("/root/Global")
 onready var scythes = get_node("scythes")
 onready var center = get_node("center")
 onready var ball = get_node("ball_sphere")
 onready var laser = get_node("laser")
 onready var laser_area = laser.get_node("laser_area")
+
 onready var laser_sound = get_node("laser_sound")
+onready var onhit = get_node("hit")
+
 onready var direction = get_node("direction")
 
 func _ready():
@@ -81,7 +85,7 @@ func _physics_process(delta):
 		laser_sound.play(0)
 		laser.play("fire")
 		
-	for target in targets:
+	for target in targets: # Kill Target Enemy
 		if target.has_method("death") and laser.is_playing():
 			target.death()
 	
@@ -95,16 +99,17 @@ func laser_idle():
 	laser.stop()
 	laser_sound.stop()
 	laser.rotation = scythes.rotation
+	
+func hit():
+	if not center.is_playing():
+		global.player_life -= 1
+		center.play("hit")
+		scythes.play("hit")
+		onhit.play(0)
 
-func _on_laser_sound_finished():
-	print("done")
-
-func _on_laser_area_body_entered(body):
-	pass #delete_enemy(body)
-
-func _on_laser_area_body_exited(body):
-	pass #delete_enemy(body)
-
-func delete_enemy(body):
-	if body.has_method("death") and laser.is_playing():
-		body.death()
+func _on_center_animation_finished():
+	onhit.stop()
+	center.play("default")
+	scythes.play("default")
+	center.stop()
+	scythes.stop()

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Eh Two Brutus.ogg-9b7856707fba9eaf3cd6b64f474c4534.oggstr"
+
+[deps]
+
+source_file="res://music/themes/Eh Two Brutus.ogg"
+dest_files=[ "res://.import/Eh Two Brutus.ogg-9b7856707fba9eaf3cd6b64f474c4534.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

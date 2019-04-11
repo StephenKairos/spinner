@@ -16,5 +16,5 @@ func _on_Finish_body_entered(body):
 		if next == "level0":
 			scene = "res://scenes/level1.tscn"
 		elif next == "level1":
-			scene = "res://scenes/ending.tscn"
+			scene = "res://scenes/title.tscn"
 		get_tree().change_scene(scene)

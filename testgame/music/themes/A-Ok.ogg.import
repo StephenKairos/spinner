@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/A-Ok.ogg-a047dc228447466bf9277ab0847f5b38.oggstr"
+
+[deps]
+
+source_file="res://music/themes/A-Ok.ogg"
+dest_files=[ "res://.import/A-Ok.ogg-a047dc228447466bf9277ab0847f5b38.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/OJ Simpson - Game Over.ogg-f6ea62cab1d48935267caed863314e25.oggstr"
+
+[deps]
+
+source_file="res://music/themes/OJ Simpson - Game Over.ogg"
+dest_files=[ "res://.import/OJ Simpson - Game Over.ogg-f6ea62cab1d48935267caed863314e25.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
