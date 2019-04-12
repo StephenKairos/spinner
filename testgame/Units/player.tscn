@@ -1,8 +1,8 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
-[ext_resource path="res://sprites/indicators/player_right.png" type="Texture" id=2]
-[ext_resource path="res://sprites/indicators/player_left.png" type="Texture" id=3]
+[ext_resource path="res://sprites/indicators/player_left.png" type="Texture" id=2]
+[ext_resource path="res://sprites/indicators/player_right.png" type="Texture" id=3]
 [ext_resource path="res://sprites/indicators/player_neither.png" type="Texture" id=4]
 [ext_resource path="res://sprites/fire_laser/fire06.png" type="Texture" id=5]
 [ext_resource path="res://sprites/fire_laser/fire01.png" type="Texture" id=6]
@@ -10,28 +10,29 @@
 [ext_resource path="res://sprites/fire_laser/fire03.png" type="Texture" id=8]
 [ext_resource path="res://sprites/fire_laser/fire04.png" type="Texture" id=9]
 [ext_resource path="res://sprites/fire_laser/fire05.png" type="Texture" id=10]
-[ext_resource path="res://sprites/player_center.png" type="Texture" id=11]
-[ext_resource path="res://sprites/player_scythes.png" type="Texture" id=12]
-[ext_resource path="res://sprites/ball_spinner/ballspinner_static.png" type="Texture" id=13]
-[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer1.png" type="Texture" id=14]
-[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer2.png" type="Texture" id=15]
-[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer3.png" type="Texture" id=16]
-[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer4.png" type="Texture" id=17]
-[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer5.png" type="Texture" id=18]
-[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer6.png" type="Texture" id=19]
-[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer7.png" type="Texture" id=20]
-[ext_resource path="res://music/fx/hit.ogg" type="AudioStream" id=21]
+[ext_resource path="res://sprites/fire_laser/predict.png" type="Texture" id=11]
+[ext_resource path="res://sprites/player_center.png" type="Texture" id=12]
+[ext_resource path="res://sprites/player_scythes.png" type="Texture" id=13]
+[ext_resource path="res://sprites/ball_spinner/ballspinner_static.png" type="Texture" id=14]
+[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer1.png" type="Texture" id=15]
+[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer2.png" type="Texture" id=16]
+[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer3.png" type="Texture" id=17]
+[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer4.png" type="Texture" id=18]
+[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer5.png" type="Texture" id=19]
+[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer6.png" type="Texture" id=20]
+[ext_resource path="res://sprites/ball_spinner/ballspinnerplayer7.png" type="Texture" id=21]
+[ext_resource path="res://music/fx/hit.ogg" type="AudioStream" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "right",
+"name": "left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "left",
+"name": "right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -51,25 +52,17 @@ animations = [ {
 "loop": true,
 "name": "fire",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "predict",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 207.002, 14.0456 )
 
 [sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 5 ) ],
-"loop": false,
-"name": "hit",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
@@ -84,13 +77,26 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "hit",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 radius = 13.8367
 
 [node name="player" type="KinematicBody2D"]
@@ -118,24 +124,24 @@ shape = SubResource( 3 )
 frames = SubResource( 4 )
 
 [node name="scythes" type="AnimatedSprite" parent="."]
-frames = SubResource( 7 )
+frames = SubResource( 5 )
 
 [node name="ball_sphere" type="Sprite" parent="."]
 visible = false
 position = Vector2( -0.429276, 0.643913 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 
 [node name="ball_sphere_old" type="AnimatedSprite" parent="."]
 visible = false
-frames = SubResource( 5 )
+frames = SubResource( 6 )
 animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 21 )
+stream = ExtResource( 22 )
 
 [connection signal="animation_finished" from="laser" to="." method="laser_idle"]
 [connection signal="animation_finished" from="center" to="." method="_on_center_animation_finished"]

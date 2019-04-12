@@ -57,6 +57,7 @@ func _physics_process(delta):
 		spin_velocity = BUILDSPIN
 		#force = Vector2(0, 0)
 	if Input.is_action_pressed("left") and Input.is_action_pressed("right"):
+		#laser.play("predict")
 		if spin_velocity < 0:
 			spin_velocity = -1 * FIRESPIN
 		else:
@@ -69,12 +70,14 @@ func _physics_process(delta):
     	))
 	if Input.is_action_just_released("left") and not Input.is_action_just_released("right"):
 		direction.play("idle")
+		#laser_idle()
 		center.set_offset(Vector2(0, 0))
 		force = initial
 		speed = MOTION_SPEED
 		spin_velocity = -1 * RELEASESPIN
 	if Input.is_action_just_released("right") and not Input.is_action_just_released("left"):
 		direction.play("idle")
+		#laser_idle()
 		center.set_offset(Vector2(0, 0))
 		force = initial * (-1)
 		speed = MOTION_SPEED

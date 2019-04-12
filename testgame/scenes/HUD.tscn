@@ -12,24 +12,20 @@ margin_right = 105.775
 margin_bottom = 78.8937
 text = "Lives:"
 
-[node name="Life_Counter" type="Label" parent="."]
-margin_left = 128.0
-margin_top = 65.0
-margin_right = 169.0
-margin_bottom = 79.0
-text = "5"
+[node name="Life_Bar" type="Node2D" parent="."]
+position = Vector2( 128, 65 )
 
 [node name="Score_Counter" type="Label" parent="."]
-margin_left = 256.0
-margin_top = 64.0
-margin_right = 297.0
-margin_bottom = 78.0
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 169.0
+margin_bottom = 142.0
 text = "0"
 
 [node name="Score" type="Label" parent="."]
-margin_left = 192.0
-margin_top = 64.0
-margin_right = 233.0
-margin_bottom = 78.0
+margin_left = 64.7747
+margin_top = 128.0
+margin_right = 105.775
+margin_bottom = 142.0
 text = "Score:"
 

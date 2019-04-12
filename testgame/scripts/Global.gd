@@ -18,7 +18,14 @@ func _ready():
 func _process(delta):
 	if player_life <= 0:
 		get_tree().change_scene("res://scenes/ending.tscn")
+		resetLife()
 		
 func reset():
+	resetLife()
+	resetScore()
+	
+func resetLife():
 	player_life = BASE_LIFE
+	
+func resetScore():
 	player_score = BASE_SCORE

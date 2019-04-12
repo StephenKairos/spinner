@@ -20,6 +20,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not music.is_playing():
+		music.play(0)
 	if Input.is_action_just_released("right"):
 		get_tree().change_scene("res://scenes/title.tscn")
 

@@ -4,12 +4,14 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+onready var global = get_node("/root/Global")
 onready var title_music = get_node("title_music")
 onready var ball = get_node("ball")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	title_music.play(0)
+	global.reset()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

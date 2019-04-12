@@ -13,7 +13,7 @@
 [ext_resource path="res://sprites/title/made_for/frame_8_delay-0.11s.png" type="Texture" id=11]
 [ext_resource path="res://sprites/title/credits.png" type="Texture" id=12]
 [ext_resource path="res://sprites/title/credits_prompt.png" type="Texture" id=13]
-[ext_resource path="res://music/themes/Victory -Title.ogg" type="AudioStream" id=14]
+[ext_resource path="res://music/themes/Victory - Credits.ogg" type="AudioStream" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -34,7 +34,7 @@ texture = ExtResource( 2 )
 position = Vector2( 512, 352 )
 scale = Vector2( 1.14, 1.14 )
 frames = SubResource( 1 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="credits" type="Sprite" parent="."]
