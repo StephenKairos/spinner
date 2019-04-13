@@ -22,10 +22,24 @@ margin_right = 169.0
 margin_bottom = 142.0
 text = "0"
 
+[node name="HighScore_Counter" type="Label" parent="."]
+margin_left = 160.0
+margin_top = 160.0
+margin_right = 169.0
+margin_bottom = 142.0
+text = "0"
+
 [node name="Score" type="Label" parent="."]
 margin_left = 64.7747
 margin_top = 128.0
 margin_right = 105.775
 margin_bottom = 142.0
 text = "Score:"
+
+[node name="HighScore" type="Label" parent="."]
+margin_left = 64.7747
+margin_top = 160.0
+margin_right = 105.775
+margin_bottom = 142.0
+text = "High Score:"
 

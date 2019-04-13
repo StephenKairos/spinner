@@ -12,6 +12,7 @@ var velocity = Vector2(1, 1)
 onready var global = get_node("/root/Global")
 onready var base = get_node("base")
 onready var death = get_node("death")
+onready var point = get_node("point")
 
 onready var HUD = preload("res://scenes/HUD.tscn")
 
@@ -35,6 +36,7 @@ func death():
 	base.visible = false
 	death.visible = true
 	velocity = Vector2(0, 0)
+	point.play(0)
 	death.play("death")
 
 func _on_death_animation_finished():

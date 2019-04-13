@@ -23,6 +23,7 @@ onready var ball = get_node("ball_sphere")
 onready var laser = get_node("laser")
 onready var laser_area = laser.get_node("laser_area")
 
+onready var laser_timer = get_node("laser_timer")
 onready var laser_sound = get_node("laser_sound")
 onready var onhit = get_node("hit")
 
@@ -69,25 +70,34 @@ func _physics_process(delta):
         	rand_range(-1.0, 1.0) * shake_amount \
     	))
 	if Input.is_action_just_released("left") and not Input.is_action_just_released("right"):
-		direction.play("idle")
-		#laser_idle()
-		center.set_offset(Vector2(0, 0))
-		force = initial
-		speed = MOTION_SPEED
-		spin_velocity = -1 * RELEASESPIN
+		if laser_timer.is_stopped():
+			direction.play("idle")
+			#laser_idle()
+			center.set_offset(Vector2(0, 0))
+			force = initial
+			speed = MOTION_SPEED
+			spin_velocity = -1 * RELEASESPIN
+		else:
+			laser_sound.play(0)
+			laser.play("fire")
 	if Input.is_action_just_released("right") and not Input.is_action_just_released("left"):
-		direction.play("idle")
-		#laser_idle()
-		center.set_offset(Vector2(0, 0))
-		force = initial * (-1)
-		speed = MOTION_SPEED
-		spin_velocity = RELEASESPIN
+		if laser_timer.is_stopped():
+			direction.play("idle")
+			#laser_idle()
+			center.set_offset(Vector2(0, 0))
+			force = initial * (-1)
+			speed = MOTION_SPEED
+			spin_velocity = RELEASESPIN
+		else:
+			laser_sound.play(0)
+			laser.play("fire")
 	if Input.is_action_just_released("left") and Input.is_action_just_released("right"):
 		direction.play("idle")
 		center.set_offset(Vector2(0, 0))
 		laser_sound.play(0)
 		laser.play("fire")
-		
+	if (Input.is_action_just_released("right") and Input.is_action_pressed("left")) or (Input.is_action_just_released("left") and Input.is_action_pressed("right")):
+		laser_timer.start(0.75)
 	for target in targets: # Kill Target Enemy
 		if target.has_method("death") and laser.is_playing():
 			target.death()
@@ -95,7 +105,7 @@ func _physics_process(delta):
 	motion += force
 	motion = motion.normalized() * speed
 
-	move_and_slide(motion)
+	var collision = move_and_slide(motion)
 	
 func laser_idle():
 	laser.play("idle")
@@ -116,3 +126,6 @@ func _on_center_animation_finished():
 	scythes.play("default")
 	center.stop()
 	scythes.stop()
+
+func _on_laser_timer_timeout():
+	laser_timer.stop()

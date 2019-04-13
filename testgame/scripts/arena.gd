@@ -6,6 +6,7 @@ extends Node2D
 const MAX_ENEMIES = 30
 
 onready var music = get_node("music")
+onready var arcade_mode = get_node("arcade_mode")
 
 onready var enemies = get_node("enemies")
 onready var base_dark = preload("res://Units/basic_dark.tscn")
@@ -23,6 +24,7 @@ var spawn = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global.reset()
+	arcade_mode.play(0)
 	music.play(0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/ending.gd" type="Script" id=1]
 [ext_resource path="res://sprites/title/purple.png" type="Texture" id=2]
 [ext_resource path="res://music/themes/OJ Simpson - Game Over.ogg" type="AudioStream" id=3]
+[ext_resource path="res://music/fx/game_over.ogg" type="AudioStream" id=4]
 
 [node name="ending" type="Control"]
 anchor_right = 1.0
@@ -18,11 +19,20 @@ position = Vector2( 506.657, 302.052 )
 zoom = Vector2( 0.75, 0.75 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 410.0
+margin_left = 409.0
 margin_top = 294.279
-margin_right = 458.0
+margin_right = 457.0
 margin_bottom = 313.279
 text = "Score:"
+align = 1
+valign = 1
+
+[node name="HighLabel" type="Label" parent="."]
+margin_left = 413.0
+margin_top = 331.0
+margin_right = 485.0
+margin_bottom = 345.0
+text = "High Score:"
 align = 1
 valign = 1
 
@@ -35,7 +45,24 @@ text = "0"
 align = 1
 valign = 1
 
+[node name="HighScore" type="Label" parent="."]
+margin_left = 550.0
+margin_top = 331.279
+margin_right = 598.0
+margin_bottom = 350.279
+text = "0"
+align = 1
+valign = 1
+
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -5.0
 
+[node name="Timer" type="Timer" parent="."]
+
+[node name="game_over" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="finished" from="game_over" to="." method="_on_game_over_finished"]

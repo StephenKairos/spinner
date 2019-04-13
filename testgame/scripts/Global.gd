@@ -9,6 +9,7 @@ var BASE_SCORE = 0
 
 var player_life = 5
 var player_score = 0
+var high_score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if player_score > high_score:
+		high_score = player_score
 	if player_life <= 0:
 		get_tree().change_scene("res://scenes/ending.tscn")
 		resetLife()

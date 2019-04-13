@@ -5,9 +5,9 @@ extends Node2D
 # var b = "text"
 
 onready var global = get_node("/root/Global")
-onready var life = get_node("Life_Counter")
 onready var lifebar = get_node("Life_Bar")
 onready var score = get_node("Score_Counter")
+onready var highscore = get_node("HighScore_Counter")
 
 onready var heart_item = preload("res://Units/life.tscn")
 
@@ -22,6 +22,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	score.set_text(str(global.player_score))
+	highscore.set_text(str(global.high_score))
 	#life.set_text(str(global.player_life))
 	if not currentlife == global.player_life:
 		currentlife = global.player_life

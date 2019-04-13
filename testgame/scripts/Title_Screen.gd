@@ -21,4 +21,4 @@ func _process(delta):
 		get_tree().change_scene("res://scenes/level0.tscn")
 	if Input.is_action_just_released("right"):
 		title_music.stop()
-		get_tree().change_scene("res://scenes/arena.tscn")
+		get_tree().change_scene("res://scenes/countdown.tscn")
